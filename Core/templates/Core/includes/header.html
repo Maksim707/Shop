@@ -1,7 +1,11 @@
+{% load static %}
 <header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand">===></a>
+        <div class="container-fluid justify-content-center">
+                  <a class="navbar-brand" href="#">
+                    <img src="{% static 'Core/img/shop.svg' %}" alt="Bootstrap" width="30" height="24">
+                  </a>
+            <a class="navbar-brand">Shop</a>
             <button class="navbar-toggler" type="button"
                 data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent"
@@ -9,22 +13,18 @@
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="">Register</a>
+                        <a class="nav-link" aria-current="page" href="{% url 'orders' %}">Orders</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Create order</a>
+                        <a class="nav-link" href="#">Create order</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Orders</a>
+                        <a class="nav-link" href="{% url 'catalog' %}">Catalog</a>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search"
-                        placeholder="Don't click" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">???</button>
                 </form>
             </div>
         </div>

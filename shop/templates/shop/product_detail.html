@@ -1,7 +1,7 @@
 {% extends "Core/base.html" %}
-{% block title %}create order{% endblock %}
-{%block content%}
 {% load static %}
+{% block title %}catalog{% endblock %}
+{% block content %}
 <div class="d-flex justify-content-center mt-3">
 	<div class="card flex-column" style="width: 16rem;">
 		<img src="{{ product.img.url }}" class="rounded-2 d-flex w-100" alt="...">
@@ -17,11 +17,12 @@
 				{% endif %}
 			</div>
 			<div class="d-flex">
-				<form method="post">{% csrf_token %}
-					<input type="text" name="delivery_address" placeholder="Адрес доставки"></input>
-					<button type="submit" class="rounded-4 mt-2">Подтвердить</button>
-				</form>
+				<span>Кол-во на складе {{ product.stock }}</span>
+				<span class="fs-3 fw-bold">{{ product.price }}₽</span>
+				<span class="text-danger mb-auto">{{ product.discount }}%</span>
 			</div>
+			<span class="flex-column" style="margin-top: auto;">{{ product.desc }}</span>
+			<a href="{% url 'create_order' id=product.id %}" class="btn btn-dark bg-secondary mx-auto">Положить в Orders</a>
 		</div>
 	</div>
 </div>

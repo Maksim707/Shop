@@ -2,21 +2,30 @@
 {% load static %}
 {% block title %}catalog{% endblock %}
 {% block content %}
-<div class="d-flex justify-content-center">
-	{% for product in products %} 
-	<div class="flex-column" style="width: 16rem;">
-		<img src="{{ product.img.url }}" class="d-flex" style="width: 640px; margin-top: 100px; margin-bottom: 100px;" alt="...">
-		<div class="card-body">
+<div class="d-flex justify-content-center mt-3">
+	{% for product in products %}
+	<div class="card flex-column" style="width: 16rem;">
+		<img src="{{ product.img.url }}" class="rounded-2 d-flex w-100" alt="...">
+		<div class="card-body d-flex flex-column">
 			<h5 class="card-title">{{ product.name }}</h5>
-			<div class="d-flex">
-				<span class="fs-3 fw-bold">{{ product.price }}</span>
-				<span class="text-danger mb-auto">{{ product.discount }}</span>
-				<span class="flex-column" style="margin-top: auto;">{{ product.desc }}</span>
+			<div class="d-flex my-auto">
+				{% for i in '12345' %}
+				{% if forloop.counter <= product.rating %}
+				<img src="{% static 'Core/img/star.png' %}" class width="32" height="32"
+					alt="...">
+				{% else %}
+				<img src="{% static 'Core/img/star.png' %}" style="filter: grayscale(1);"
+					width="32" height="32" alt="...">
+				{% endif %}
+				{% endfor %}
 			</div>
 			<div class="d-flex">
-				<img src="{% static 'Core/img/star.png' %}" class="" width="32" height="32" alt="...">
+				<span class="fs-3 fw-bold">{{ product.price }}₽</span>
+				<span class="text-danger mb-auto">{{ product.discount }}%</span>
 			</div>
-			<a href="/admin" class="btn btn-dark">allmyfellas</a>
+			<span class="flex-column" style="margin-top: auto;">{{ product.desc }}</span>
+			<a href="{% url 'product_detail' id=product.id %}"
+				class="btn btn-dark bg-secondary mx-auto">Подробнее</a>
 		</div>
 	</div>
 	{% endfor %}

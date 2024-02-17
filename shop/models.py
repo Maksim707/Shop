@@ -2,7 +2,7 @@ from django.db import models
 from django.utils import timezone
 
 class Product(models.Model):
-	name = models.TextField(max_length=30)
+	name = models.TextField(max_length=100)
 	price = models.PositiveIntegerField()
 	discount = models.IntegerField()
 	rating = models.FloatField()
@@ -17,7 +17,7 @@ def __str__(self):
 
 class Order(models.Model):
 	product = models.ForeignKey(to=Product, on_delete=models.CASCADE)
-	delivery_adress = models.CharField(max_length=50)
+	delivery_address = models.CharField(max_length=50)
 	created_at = models.DateTimeField(auto_now_add=True)
 
 

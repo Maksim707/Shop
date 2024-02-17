@@ -8,4 +8,4 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-	list_display = ('id','product', 'delivery_adress', 'created_at')
+	list_display = ('id','product', 'delivery_address', 'created_at')
